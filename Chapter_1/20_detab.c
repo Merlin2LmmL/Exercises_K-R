@@ -49,7 +49,7 @@ void detab(char line[], int len, int lim)
 
 int shift(char line[], int len, int pos, int qty, int lim)
 {
-    /* only shifts to the left */
+    /* only shifts to the right */
     if (qty < 0) return len;
 
     for (int i = 0; i < qty; ++i) {
