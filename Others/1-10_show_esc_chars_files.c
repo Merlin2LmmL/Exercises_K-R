@@ -1,10 +1,21 @@
 #include <stdio.h>
 
-int main(void)
+int main(int argc, char *argv[])
 {
+    if (argc < 2) {
+        fprintf(stderr, "Usage: %s <file>\n", argv[0]);
+        return 1;
+    }
+
+    FILE *fp = fopen(argv[1], "r");
+    if (!fp) {
+        perror("fopen");
+        return 1;
+    }
+
     int c, space_cnt;
 
-    while ((c = getchar()) != EOF) {
+    while ((c = fgetc(fp)) != EOF) {
         if (c == ' ') {
             ++space_cnt;
         } else {
@@ -25,5 +36,6 @@ int main(void)
 
     printf("EOF\n");
 
+    fclose(fp);
     return 0;
 }

@@ -2,11 +2,13 @@
 
 #define MAXLINE 100
 
-#define NORMAL       0
-#define COMMENT      1
-#define STRING       2
-#define LITERAL      3
-#define LINE_COMMENT 4
+enum states {
+    NORMAL,
+    COMMENT,
+    STRING,
+    LITERAL,
+    LINE_COMMENT,
+};
 
 int get_line(char line[], int lim);
 int remove_comments(char line[], int len);
