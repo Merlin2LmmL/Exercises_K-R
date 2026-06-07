@@ -7,42 +7,42 @@ void print_line(char line[], int lim);
 
 int main(void)
 {
-    char line[THRESHOLD + 1];
+	char line[THRESHOLD + 1];
 
-    while (get_line(line, THRESHOLD + 1) > 0) {
-        ;
-    }
+	while (get_line(line, THRESHOLD + 1) > 0) {
+		;
+	}
 
-    printf("\n");
-    return 0;
+	printf("\n");
+	return 0;
 }
 
 int get_line(char line[], int lim)
 {
-    int c, i;
+	int c, i;
 
-    // Fill Buffer till THRESHOLD
-    for (i = 0; i < lim && (c = getchar()) != EOF && c != '\n'; ++i) {
-        line[i] = c;
-    }
+	// Fill Buffer till THRESHOLD
+	for (i = 0; i < lim && (c = getchar()) != EOF && c != '\n'; ++i) {
+		line[i] = c;
+	}
 
-    // If THRESHOLD reached, print buffer and print remaining input
-    if (i == lim) {
-        print_line(line, lim);
+	// If THRESHOLD reached, print buffer and print remaining input
+	if (i == lim) {
+		print_line(line, lim);
 
-        for (; (c = getchar()) != EOF && c != '\n'; ++i) {
-            putchar(c);
-        }
+		for (; (c = getchar()) != EOF && c != '\n'; ++i) {
+			putchar(c);
+		}
 
-        printf("\n");
-    }
+		printf("\n");
+	}
 
-    return i;
+	return i;
 }
 
 void print_line(char line[], int lim)
 {
-    for (int i = 0; i < lim; ++i) {
-        putchar(line[i]);
-    }
+	for (int i = 0; i < lim; ++i) {
+		putchar(line[i]);
+	}
 }

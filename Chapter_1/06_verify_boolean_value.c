@@ -2,13 +2,13 @@
 
 int main(void)
 {
-    int c;
+	int c;
 
-    while (c = getchar() != EOF) {
-        printf("%d\n", c);
-    }
+	while (c = getchar() != EOF) {
+		printf("%d\n", c);
+	}
 
-    printf("%d\n", c);
+	printf("%d\n", c);
 
-    return 0;
+	return 0;
 }

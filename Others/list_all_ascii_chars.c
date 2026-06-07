@@ -2,9 +2,9 @@
 
 int main(void)
 {
-    for (int i = 0; i < 128; ++i) {
-        printf("%d\t%c\n", i, i);
-    }
+	for (int i = 0; i < 128; ++i) {
+		printf("%d\t%c\n", i, i);
+	}
 
-    return 0;
+	return 0;
 }

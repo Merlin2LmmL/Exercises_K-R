@@ -2,17 +2,17 @@
 
 int main(void)
 {
-    int c, lastC;
+	int c, lastC;
 
-    while ((c = getchar()) != EOF) {
+	while ((c = getchar()) != EOF) {
 
-        if (!(c == ' ' && lastC == ' ')) {
-            putchar(c);
-        }
+		if (!(c == ' ' && lastC == ' ')) {
+			putchar(c);
+		}
 
-        lastC = c;
-    }
-    printf("\n");
+		lastC = c;
+	}
+	printf("\n");
 
-    return 0;
+	return 0;
 }

@@ -2,14 +2,14 @@
 
 int main(void)
 {
-    int cnt, c;
-    cnt = 0;
+	int cnt, c;
+	cnt = 0;
 
-    while ((c = getchar()) != EOF && c != '\n') {
-        ++cnt;
-    }
+	while ((c = getchar()) != EOF && c != '\n') {
+		++cnt;
+	}
 
-    printf("Input was %d chars long\n", cnt);
+	printf("Input was %d chars long\n", cnt);
 
-    return 0;
+	return 0;
 }

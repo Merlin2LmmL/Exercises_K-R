@@ -6,29 +6,29 @@ int get_line(char line[], int lim);
 
 int main(void)
 {
-    char line[THRESHOLD + 1];
+	char line[THRESHOLD + 1];
 
-    while (get_line(line, THRESHOLD + 1) > 0) {
-        printf("%s\n", line);
-    }
+	while (get_line(line, THRESHOLD + 1) > 0) {
+		printf("%s\n", line);
+	}
 
-    printf("\n");
-    return 0;
+	printf("\n");
+	return 0;
 }
 
 int get_line(char line[], int lim)
 {
-    int c, i;
+	int c, i;
 
-    for (i = 0; (i < lim) * ((c = getchar()) != EOF) * (c != '\n'); ++i) {
-        line[i] = c;
-    }
+	for (i = 0; (i < lim) * ((c = getchar()) != EOF) * (c != '\n'); ++i) {
+		line[i] = c;
+	}
 
-    if (i == lim) {
-        for (; (c = getchar()) != EOF && c != '\n'; ++i) {
-            ;
-        }
-    }
+	if (i == lim) {
+		for (; (c = getchar()) != EOF && c != '\n'; ++i) {
+			;
+		}
+	}
 
-    return i;
+	return i;
 }

@@ -10,18 +10,18 @@ int step = 5;
 
 int main(void)
 {
-    printf("Celsius\t\tFahrenheit\n");
+	printf("Celsius\t\tFahrenheit\n");
 
-    int c;
+	int c;
 
-    // Either move from start to end or from end to start depending on reverse.
-    for (reverse ? (c = end) : (c = start); reverse ? (c >= start) : (c <= end); reverse ? (c -= step) : (c += step)) {
-        printf("%3d\t\t%10d\n", c, convert(c));
-    }
+	// Either move from start to end or from end to start depending on reverse.
+	for (reverse ? (c = end) : (c = start); reverse ? (c >= start) : (c <= end); reverse ? (c -= step) : (c += step)) {
+		printf("%3d\t\t%10d\n", c, convert(c));
+	}
 
-    return 0;
+	return 0;
 }
 
 int convert(int c) {
-    return (c * 9 / 5) + 32;
+	return (c * 9 / 5) + 32;
 }
