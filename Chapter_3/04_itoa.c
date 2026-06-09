@@ -1,8 +1,11 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <string.h>
 
 char *itoa(int n);
+int strtoi(char s[], int b, int *value);
 char *readline(void);
 
 int main(void)
@@ -10,12 +13,19 @@ int main(void)
 	char *line;
 
 	while ((line = readline()) != NULL) {
-		char *result;
-		result  = itoa(line);
-		if (result != NULL) {
-			printf("%s\n", result);
-			free(result);
-		}
+		int num;
+
+		if (strtoi(line, 10, &num) != -1) {
+			printf("%d\n", num);
+
+			char *result;
+			if ((result = itoa(num)) != NULL) {
+				printf("%s\n", result);
+				free(result);
+			}
+
+		} else printf("Invalid Input\n");
+
 		free(line);
 	}
 
@@ -25,25 +35,57 @@ int main(void)
 
 char *itoa(int n)
 {
+	if (n == 0) {
+    		char *s = malloc(2);
+    		s[0] = '0';
+    		s[1] = '\0';
+    		return s;
+	}
+
 	int length = floor(log10(abs(n))) + 1;
-	int is_negtaive = (n < 0) ? 1 : 0;
-	char *s = malloc(length + (is_negative ? 1));
+	int is_negative = (n < 0) ? 1 : 0;
+	char *s = malloc(sizeof(char) * (length + is_negative + 1));
 
-	abs(n);
+	if (s == NULL)
+		return NULL;
 
-	for (int i = 0; i < length - 1; ++i) {
-		n % 10 + '0';
+	n = abs(n);
+
+	for (int i = (length - 1) + is_negative; i >= is_negative; --i) {
+		s[i] = n % 10 + '0';
 		n /= 10;
 	}
 
-	if (is_negative) {
-		for (int i = length - 1; i >= 0; ++i) {
-			s[i] = s[i - 1];
-		}
+	if (is_negative)
 		s[0] = '-';
-	}
+
+	s[length + is_negative] = '\0';
 
 	return s;
+}
+
+int strtoi(char s[], int b, int *value)
+{
+	*value = 0;
+	int is_negative = 0; /* default positive */
+
+	for (int i = 0; s[i] != '\0' && s[i] != '\n'; ++i) {
+		int c = s[i];
+		if (!((c >= '0' && c <= '9') || (c == '-' && i <= 2)))
+			return -1;
+
+		if (c == '-') {
+			is_negative = !is_negative;
+		} else {
+			*value *= b;
+			*value += c - '0';
+		}
+	}
+
+	if (is_negative)
+		*value *= -1;
+
+	return 0;
 }
 
 char *readline(void) {
