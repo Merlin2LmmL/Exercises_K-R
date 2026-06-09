@@ -16,8 +16,6 @@ int main(void)
 		int num;
 
 		if (strtoi(line, 10, &num) != -1) {
-			printf("%d\n", num);
-
 			char *result;
 			if ((result = itoa(num)) != NULL) {
 				printf("%s\n", result);

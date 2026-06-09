@@ -75,6 +75,7 @@ int get_line(FILE *fp, char line[], int lim)
 	return i;
 }
 
+/* Modified: Changes 4 space chars at the start of TABPOS to a tab char */
 void entab(char line[])
 {
 	char out[MAXLINE];
